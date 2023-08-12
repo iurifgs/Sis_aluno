@@ -1,0 +1,14 @@
+body{
+    background-image: linear-gradient(to right, rgb(20, 147, 220), rgb(17, 54, 71));
+}
+
+.container {
+    margin-top: 90px;
+}
+
+.title{
+    padding-left: 500px;
+    margin-top: 50px;
+    color: white;
+    
+}
