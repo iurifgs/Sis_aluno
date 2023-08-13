@@ -19,16 +19,19 @@ require_once('../conexao.php');
 ##cadastrar
 if (isset($_GET['cadastrar'])) {
     ##dados recebidos pelo metodo GET
-    $dis = $_GET["disciplina"];
+    $disciplina = $_GET["disciplina"];
     $ch = $_GET["ch"];
     $semestre = $_GET["semestre"];
     $idprofessor = $_GET["idprofessor"];
+    $nota1 = $_GET["nota1"];
+    $nota2 = $_GET["nota2"];
+    $media = ($nota1+$nota2)/2;
     
 
 
     ##codigo SQL
-    $sql = "INSERT INTO disciplina (disciplina,ch,semestre,idprofessor) 
-                VALUES('$dis','$ch','$semestre','$idprofessor')";
+    $sql = "INSERT INTO disciplina (nomedisciplina,ch,semestre,idprofessor,Nota1,Nota2,Media) 
+                VALUES('$disciplina','$ch','$semestre','$idprofessor','$nota1','$nota2','$media')";
 
     ##junta o codigo sql a conexao do banco
     $sqlcombanco = $conexao->prepare($sql);
@@ -36,7 +39,7 @@ if (isset($_GET['cadastrar'])) {
     ##executa o sql no banco de dados
     if ($sqlcombanco->execute()) {
         echo " <strong>OK!</strong> a disciplina
-                $dis foi Incluido com sucesso!!!";
+                $disciplina foi Incluido com sucesso!!!";
         echo " <button class='button'><a href='discindex.php'>voltar</a></button>";
     }
 }
@@ -44,34 +47,37 @@ if (isset($_GET['cadastrar'])) {
 if (isset($_POST['update'])) {
 
     ##dados recebidos pelo metodo POST
-    $dis = $_POST["disciplina"];
+    $disciplina = $_POST["disciplina"];
     $ch = $_POST["ch"];
-    $iddisciplina = $_POST["iddisciplina"];
+    $id = $_POST["id"];
     $semestre = $_POST["semestre"];
     $idprofessor = $_POST["idprofessor"];
+    $nota1 = $_POST['nota1'];
+    $nota2 = $_POST['nota2'];
+    $media = ($nota1+$nota2)/2;
   
 
     ##codigo sql
-    $sql = "UPDATE disciplina SET disciplina= :disciplina, ch= :ch, semestre= :semestre, idprofessor= :idprofessor WHERE iddisciplina= :iddisciplina";
+    $sql = "UPDATE disciplina SET nomedisciplina= :disciplina, ch= :ch, semestre= :semestre, idprofessor= :idprofessor, Nota1= :nota1, Nota2= :nota2 WHERE id= :iddisciplina";
 
     ##junta o codigo sql a conexao do banco
     $stmt = $conexao->prepare($sql);
 
     ##diz o paramentro e o tipo  do paramentros
-    $stmt->bindParam(':disciplina', $dis, PDO::PARAM_STR);
+    $stmt->bindParam(':disciplina', $disciplina, PDO::PARAM_STR);
     $stmt->bindParam(':ch', $ch, PDO::PARAM_STR);
     $stmt->bindParam(':semestre', $semestre, PDO::PARAM_STR);
     $stmt->bindParam(':idprofessor', $idprofessor, PDO::PARAM_INT);
-    
-
+    $stmt->bindParam(':nota1', $nota1, PDO::PARAM_STR);
+    $stmt->bindParam(':nota2', $nota2, PDO::PARAM_STR);
+    $stmt->bindParam(':media', $media, PDO::PARAM_STR);
+    $stmt->bindParam(':iddisciplina', $id, PDO::PARAM_INT);
 
     $stmt->execute();
 
-
-
     if ($stmt->execute()) {
         echo " <strong>OK!</strong> a disciplina 
-               $dis foi Alterado com sucesso!!!";
+               $disciplina foi alterada com sucesso!!!";
         echo " <button class='button'><a href='listadisciplina.php'>voltar</a></button>";
     }
 }
@@ -80,14 +86,15 @@ if (isset($_POST['update'])) {
 ##Excluir
 if (isset($_GET['excluir'])) {
     $iddisciplina = $_GET['iddisciplina'];
-    $sql = "DELETE FROM `disciplina` WHERE iddisciplina={$iddisciplina}";
+    $disciplina = $_GET['disciplina'];
+    $sql = "DELETE FROM `disciplina` WHERE id=$iddisciplina";
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $conexao->prepare($sql);
     $stmt->execute();
 
     if ($stmt->execute()) {
         echo " <strong>OK!</strong> a disciplina
-          $iddisciplina foi excluida!!!";
+          $disciplina foi excluida!!!";
         echo " <button class='button'><a href='listadisciplina.php'>voltar</a></button>";
     }
 }

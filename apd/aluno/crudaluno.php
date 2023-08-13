@@ -23,12 +23,12 @@ if (isset($_GET['cadastrar'])) {
     $idade = $_GET["idade"];
     $datanascimento = $_GET["datanascimento"];
     $endereco = $_GET["endereco"];
-    $matricula = $_GET["matricula"];
+    
     
 
     ##codigo SQL
-    $sql = "INSERT INTO aluno(nome,idade,datanascimento,endereco,matricula) 
-                VALUES('$nome','$idade','$datanascimento','$endereco','$matricula')";
+    $sql = "INSERT INTO aluno(nome,idade,datanascimento,endereco) 
+                VALUES('$nome','$idade','$datanascimento','$endereco')";
 
     ##junta o codigo sql a conexao do banco
     $sqlcombanco = $conexao->prepare($sql);
@@ -48,23 +48,21 @@ if (isset($_POST['update'])) {
     $idade = $_POST["idade"];
     $datanascimento = $_POST["datanascimento"];
     $endereco = $_POST["endereco"];
-    $matricula = $_POST["matricula"];
-    $idaluno = $_POST["idaluno"];
+    $id = $_POST["id"];
 
 
     ##codigo sql
-    $sql = "UPDATE aluno SET nome= :nome, idade= :idade, datanascimento= :datanascimento, endereco= :endereco, matricula= :matricula WHERE idaluno= :idaluno ";
+    $sql = "UPDATE aluno SET nome= :nome, idade= :idade, datanascimento= :datanascimento, endereco= :endereco WHERE id= :id ";
 
     ##junta o codigo sql a conexao do banco
     $stmt = $conexao->prepare($sql);
 
     ##diz o paramentro e o tipo  do paramentros
-    $stmt->bindParam(':idaluno', $idaluno, PDO::PARAM_INT);
+    $stmt->bindParam(':idaluno', $id, PDO::PARAM_INT);
     $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
     $stmt->bindParam(':idade', $idade, PDO::PARAM_INT);
     $stmt->bindParam(':datanascimento', $datanascimento, PDO::PARAM_STR);
     $stmt->bindParam(':endereco', $endereco, PDO::PARAM_STR);
-    $stmt->bindParam(':matricula', $matricula, PDO::PARAM_STR);
    
 
     $stmt->execute();
@@ -80,15 +78,15 @@ if (isset($_POST['update'])) {
 
 ##Excluir
 if (isset($_GET['excluir'])) {
-    $idaluno = $_GET['idaluno'];
-    $sql = "DELETE FROM `aluno` WHERE idaluno={$idaluno}";
+    $id = $_GET['id'];
+    $sql = "DELETE FROM `aluno` WHERE id={$id}";
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $conexao->prepare($sql);
     $stmt->execute();
 
     if ($stmt->execute()) {
         echo " <strong>OK!</strong> o aluno
-             $idaluno foi excluido!!!";
+             $id foi excluido!!!";
         echo " <button class='button'><a href='listaalunos.php'>voltar</a></button>";
     }
 }

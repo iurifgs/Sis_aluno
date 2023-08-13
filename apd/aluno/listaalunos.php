@@ -40,7 +40,6 @@
                             <th>IDADE</th>
                             <th>DATA NASCIMENTO</th>
                             <th>ENDERECO</th>
-                            <th>MATRICULA</th>
                         </tr>
                     </thead>
 
@@ -48,16 +47,15 @@
                         <tr>
                             <?php foreach ($retorno->fetchall() as $value) { ?>
                         <tr>
-                            <td> <?php echo $value['idaluno'] ?> </td>
+                            <td> <?php echo $value['id'] ?> </td>
                             <td> <?php echo $value['nome'] ?> </td>
                             <td> <?php echo $value['idade'] ?> </td>
                             <td> <?php echo $value['datanascimento'] ?> </td>
                             <td> <?php echo $value['endereco'] ?> </td>
-                            <td> <?php echo $value['matricula'] ?> </td>
 
                             <td>
                                 <form method="POST" action="altaluno.php">
-                                    <input name="idaluno" type="hidden" value="<?php echo $value['idaluno']; ?>" />
+                                    <input name="id" type="hidden" value="<?php echo $value['id']; ?>" />
                                     <button name="alterar" type="submit">Alterar</button>
                                 </form>
 
@@ -65,7 +63,7 @@
 
                             <td>
                                 <form method="GET" action="crudaluno.php">
-                                    <input name="idaluno" type="hidden" value="<?php echo $value['idaluno']; ?>" />
+                                    <input name="id" type="hidden" value="<?php echo $value['id']; ?>" />
                                     <button name="excluir" type="submit">Excluir</button>
                                 </form>
 

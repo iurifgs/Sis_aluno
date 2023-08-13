@@ -20,14 +20,14 @@
 
                     <div class="inputBox">
                         <input type="text" name="ch" id="ch" class="inputUser" placeholder="Digite o ch" required>
-                        <label for="ida" class="labelInput">ch:</label>
+                        <label for="ida" class="labelInput">Cargo horaria:</label>
                     </div>
 
                     <br><br>
 
                      <div class="inputBox">
                         <input type="text" name="semestre" id="seme" class="inputUser" required placeholder="Digite o semestre">
-                        <label for="semestre" class="labelInput">semestre:</label>
+                        <label for="semestre" class="labelInput">Semestre:</label>
                     </div>
                     
                     <br><br>
@@ -36,18 +36,30 @@
                         <input type="number" name="idprofessor" id="idp" class="inputUser" required placeholder="Digite seu id">
                         <label for="idp" class="labelInput">ID professor:</label>
                     </div>
-
-                  
-
-                    <br><br>
-                    <br><br>
-
                     
+                    <br><br>
+
+                    <div class="inputBox">
+                        <input type="text" name="nota1" id="idp" class="inputUser" required placeholder="Digite a nota 1">
+                        <label for="idp" class="labelInput">Nota 1:</label>
+                    </div>
+
+                    <br><br>
+
+                    <div class="inputBox">
+                        <input type="text" name="nota2" id="idp" class="inputUser" required placeholder="Digite a nota 2">
+                        <label for="idp" class="labelInput">Nota 2:</label>
+                    </div>
+
                     <br>
+
                     <input type="submit" id="submit" name="cadastrar" value="cadastrar"> 
+                
                 </fieldset>
             </form>
-            <button class="button" id="submit"><a href="discindex.php">voltar</a></button>
+            
+                    <button class="button" id="submit"><a href="discindex.php">voltar</a></button>
+        
         </div>
 </body>
 </html>

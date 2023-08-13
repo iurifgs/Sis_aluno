@@ -13,16 +13,16 @@
     <?php
     require_once('../conexao.php');
 
-    $id = $_POST['idaluno'];
+    $id = $_POST['id'];
 
     ##sql para selecionar apens um aluno
-    $sql = "SELECT * FROM aluno where idaluno= :idaluno";
+    $sql = "SELECT * FROM aluno where id= :id";
 
     # junta o sql a conexao do banco
     $retorno = $conexao->prepare($sql);
 
     ##diz o paramentro e o tipo  do paramentros
-    $retorno->bindParam(':idaluno',$idaluno, PDO::PARAM_INT);
+    $retorno->bindParam(':id',$id, PDO::PARAM_INT);
 
     #executa a estrutura no banco
     $retorno->execute();
@@ -35,7 +35,8 @@
     $idade = $array_retorno['idade'];
     $datanascimento = $array_retorno['datanascimento'];
     $endereco = $array_retorno['endereco'];
-    $matricula = $array_retorno['matricula'];
+   
+   
 
 
     ?>
@@ -45,45 +46,39 @@
 
              <div class="input-group">
                 <div class="input-box">
-                     <label for="">nome:</label>
+                     <label for="">Nome:</label>
                     <input type="text" name="nome" id="" value=<?php echo $nome?>>
                 </div>
 
                 <br>
                 
                 <div class="input-box">
-                    <label for="">idade:</label>
-                    <input type="number" name="idade" id="" value=<?php echo $idade ?>>
+                    <label for="">Idade:</label>
+                    <input type="number" name="idade" id="" value=<?php echo $idade?>>
                 </div>
 
                 <br>
                 
                 <div class="input-box">
-                    <label for="">id:</label>
-                   <input type="number" name="idaluno" id="" value=<?php echo $idaluno ?>>
+                    <label for="">Id:</label>
+                   <input type="number" name="id" id="" value=<?php echo $id?>>
                 </div>
 
                 <br>
                 <div class="input-box">
-                     <label for="">data nascimento:</label>
-                     <input type="date" name="datanascimento" id="" value=<?php echo $datanascimento ?>>
+                     <label for="">Data nascimento:</label>
+                     <input type="date" name="datanascimento" id="" value=<?php echo $datanascimento?>>
                 </div>
 
                 <br>
                  
                 <div class="input-box">
-                    <label for="">endereco:</label>
-                     <input type="text" name="endereco" id="" value=<?php echo $endereco ?>>
+                    <label for="">Endereco:</label>
+                     <input type="text" name="endereco" id="" value=<?php echo $endereco?>>
                 </div>
                 
                 <br>
                 
-                <div class="input-box">
-                    <label for="">matricula:</label>
-                    <input type="text" name="matricula" id="" value=<?php echo $matricula ?>>
-                </div>
-                    
-                <br>
                 
                 <div class="ambos">
                     <input type="submit" name="update" value="Alterar">

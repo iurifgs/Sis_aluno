@@ -13,10 +13,10 @@
     <?php
     require_once('../conexao.php');
 
-    $iddisciplina = $_POST['iddisciplina'];
+    $iddisciplina = $_POST['id'];
 
     ##sql para selecionar apens um aluno
-    $sql = "SELECT * FROM disciplina where iddisciplina= :iddisciplina";
+    $sql = "SELECT * FROM disciplina where id= :iddisciplina";
 
     # junta o sql a conexao do banco
     $retorno = $conexao->prepare($sql);
@@ -31,10 +31,13 @@
     $array_retorno = $retorno->fetch();
 
     ##armazena retorno em variaveis
-    $dis = $array_retorno['disciplina'];
+    $disciplina = $array_retorno['disciplina'];
     $ch = $array_retorno['ch'];
     $semestre = $array_retorno['semestre'];
     $idprofessor = $array_retorno['idprofessor'];
+    $nota1 = $array_retorno['Nota1'];
+    $nota2 = $array_retorno['Nota2'];
+    $id = $array_retorno['id'];
    
 
 
@@ -42,55 +45,55 @@
         <H1>Altere as informações de cadastro</H1>
 
     <form method="POST" action="crudadisciplina.php" >
-
              <div class="input-group">
                 <div class="input-box">
-                     <label for="">disciplina:</label>
-                    <input type="text" name="disciplina" id="" value=<?php echo $dis ?>>
+                     <label for="">Disciplina:</label>
+                    <input type="text" name="disciplina" id="" value=<?php echo $disciplina ?>>
                 </div>
 
                 <br>
                 
                 <div class="input-box">
-                    <label for="">ch:</label>
+                    <label for="">Cargo horaria:</label>
                     <input type="text" name="ch" id="" value=<?php echo $ch ?>>
                 </div>
 
                 <br>
-                
-                <div class="input-box">
-                    <label for="">id:</label>
-                   <input type="number" name="iddisciplina" id="" value=<?php echo $iddisciplina ?>>
-                </div>
 
                 <br>
+                
                 <div class="input-box">
-                     <label for="">semestre:</label>
+                     <label for="">Semestre:</label>
                      <input type="text" name="semestre" id="" value=<?php echo $semestre ?>>
                 </div>
 
                 <br>
                  
                 <div class="input-box">
-                    <label for="">id profesor:</label>
+                    <label for="">Id profesor:</label>
                      <input type="int" name="idprofessor" id="" value=<?php echo $idprofessor ?>>
                 </div>
                 
                 <br>
                 
+                <div class="input-box">
+                    <label for="">Nota 1:</label>
+                     <input type="text" name="nota1" id="" value=<?php echo $nota1 ?>>
+                </div>
                 
                 <br>
                 
+                <div class="input-box">
+                    <label for="">Nota 2:</label>
+                     <input type="text" name="nota2" id="" value=<?php echo $nota2 ?>>
+                </div>
+
                 <div class="ambos">
                     <input type="submit" name="update" value="Alterar">
-
-                   
                     <button class="button"><a href="listadisciplina.php">voltar</a></button>
-                    
                 </div>
                 
             </div>
-    
     </form>
 </body>
 </html>

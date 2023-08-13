@@ -3,7 +3,7 @@
 define('HOST', 'ceteia.guanambi.ifbaiano.edu.br:13306');
 define('USUARIO', 'sisaluno');
 define('SENHA', 'sisaluno2023');
-define('DBNAME', 'sisalunov');
+define('DBNAME', 'sisaluno');
 
 //Criar a conexão com banco de dados usando o PDO e a porta do banco de dados
 //Utilizar o Try/Catch para verificar a conexão.

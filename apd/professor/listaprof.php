@@ -39,7 +39,8 @@
                             <th>NOME</th>
                             <th>IDADE</th>
                             <th>CPF</th>
-                            <th>SIAPE</th>
+                            <th>ENDERECO</th>
+                            <th>DATA DE NASCIMENTO</th>
                         </tr>
                     </thead>
 
@@ -47,16 +48,17 @@
                         <tr>
                             <?php foreach ($retorno->fetchall() as $value) { ?>
                         <tr>
-                            <td> <?php echo $value['idprofessor'] ?> </td>
-                            <td> <?php echo $value['nomeprof'] ?> </td>
+                            <td> <?php echo $value['id'] ?> </td>
+                            <td> <?php echo $value['nome'] ?> </td>
                             <td> <?php echo $value['idade'] ?> </td>
                             <td> <?php echo $value['cpf'] ?> </td>
-                            <td> <?php echo $value['siape'] ?> </td>
+                            <td> <?php echo $value['endereco'] ?> </td>
+                            <td> <?php echo $value['datanascimento'] ?> </td>
                            
 
                             <td>
                                 <form method="POST" action="altaprof.php">
-                                    <input name="idprofessor" type="hidden" value="<?php echo $value['idprofessor']; ?>" />
+                                    <input name="id" type="hidden" value="<?php echo $value['id']; ?>" />
                                     <button name="alterar" type="submit">Alterar</button>
                                 </form>
 
@@ -64,7 +66,7 @@
 
                             <td>
                                 <form method="GET" action="crudaprof.php">
-                                    <input name="idprofessor" type="hidden" value="<?php echo $value['idprofessor']; ?>" />
+                                    <input name="id" type="hidden" value="<?php echo $value['id']; ?>" />
                                     <button name="excluir" type="submit">Excluir</button>
                                 </form>
 

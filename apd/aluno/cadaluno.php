@@ -20,7 +20,7 @@
 
                     <div class="inputBox">
                         <input type="number" name="idade" id="idade" class="inputUser" placeholder="Digite sua idade" required>
-                        <label for="ida" class="labelInput">idade</label>
+                        <label for="ida" class="labelInput">Idade</label>
                     </div>
 
                     <br><br>
@@ -31,16 +31,10 @@
                     <br><br>
 
                     <div class="inputBox">
-                        <input type="text" name="ende" id="endereco" class="inputUser" required placeholder="Digite seu endereço">
+                        <input type="text" name="endereco" id="endereco" class="inputUser" required placeholder="Digite seu endereço">
                         <label for="endereco" class="labelInput">Endereço</label>
                     </div>
 
-                    <br><br><br>
-
-                    <div class="inputBox">
-                        <input type="number" name="matricula" id="matricula" class="inputUser" placeholder="Digite sua matricula" required>
-                        <label for="matricula" class="labelInput">Matricula</label>
-                    </div>
 
                     <br><br>
                     <br><br>

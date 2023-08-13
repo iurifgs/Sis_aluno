@@ -40,6 +40,9 @@
                             <th>CH</th>
                             <th>SEMESTRE</th>
                             <th>ID PROFESSOR</th>
+                            <th>NOTA1</th>
+                            <th>NOTA2</th>
+                            <th>MEDIA</th>
                         </tr>
                     </thead>
 
@@ -47,16 +50,19 @@
                         <tr>
                             <?php foreach ($retorno->fetchall() as $value) { ?>
                         <tr>
-                            <td> <?php echo $value['iddisciplina'] ?> </td>
-                            <td> <?php echo $value['disciplina'] ?> </td>
+                            <td> <?php echo $value['id'] ?> </td>
+                            <td> <?php echo $value['nomedisciplina'] ?> </td>
                             <td> <?php echo $value['ch'] ?> </td>
                             <td> <?php echo $value['semestre'] ?> </td>
                             <td> <?php echo $value['idprofessor'] ?> </td>
+                            <td> <?php echo $value['Nota1'] ?> </td>
+                            <td> <?php echo $value['Nota2'] ?> </td>
+                            <td> <?php echo $value['Media'] ?> </td>
                           
 
                             <td>
                                 <form method="POST" action="altadisciplina.php">
-                                    <input name="iddisciplina" type="hidden" value="<?php echo $value['iddisciplina']; ?>" />
+                                    <input name="id" type="hidden" value="<?php echo $value['id']; ?>" />
                                     <button name="alterar" type="submit">Alterar</button>
                                 </form>
 
@@ -64,7 +70,8 @@
 
                             <td>
                                 <form method="GET" action="crudadisciplina.php">
-                                    <input name="iddisciplina" type="hidden" value="<?php echo $value['iddisciplina']; ?>" />
+                                    <input name="iddisciplina" type="hidden" value="<?php echo $value['id']; ?>" />
+                                    <input name="disciplina" type="hidden" value="<?php echo $value['nomedisciplina']; ?>" />
                                     <button name="excluir" type="submit">Excluir</button>
                                 </form>
 
